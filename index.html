@@ -1,213 +1,129 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Excelsus - Rules</title>
   <style>
-    :root{
-      --bg1:#1e1e2f;
-      --bg2:#2d2d44;
-      --panel:#14141e;
-      --accent:#ffcc00;
-      --muted:#aaa;
-      --card:#111;
-    }
-
-    body{
-      margin:0;
+    body {
+      margin: 0;
       font-family: Arial, Helvetica, sans-serif;
-      color:#f0f0f0;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
+      color: #f0f0f0;
+      background: linear-gradient(135deg, #1e1e2f, #2d2d44);
       background-attachment: fixed;
     }
-
-    header{
-      background: rgba(0,0,0,0.72);
+    header {
+      background: rgba(0, 0, 0, 0.7);
       text-align: center;
       padding: 2rem 1rem;
       border-bottom: 2px solid #444;
-      position: relative; /* for social buttons */
     }
-
-    header h1{
-      margin:0;
-      font-size:2.4rem;
-      color: var(--accent);
-      text-transform:uppercase;
-      letter-spacing:2px;
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+      color: #ffcc00;
+      text-transform: uppercase;
+      letter-spacing: 2px;
     }
-    header p{
-      margin:0.5rem 0 0;
-      font-size:1.05rem;
-      color:var(--muted);
+    header p {
+      margin: 0.5rem 0 0;
+      font-size: 1.2rem;
+      color: #aaa;
     }
-
-    /* Social buttons */
-    .social-links{
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      display:flex;
-      gap:8px;
-      z-index:20;
-    }
-    .social-links a{
-      width:44px;
-      height:44px;
-      border-radius:50%;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background:#222;
-      color:#fff; /* sets svg currentColor */
-      text-decoration:none;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.45);
-      transition: transform .06s ease, background .12s ease;
-    }
-    .social-links a:hover{
-      background:#333;
-      transform: translateY(-1px);
-    }
-    .social-links svg{
-      display:block;           /* important to center */
-      width:22px;             /* uniform visual size */
-      height:22px;
-      fill: currentColor;     /* inherit color from anchor */
-      line-height:0;
-    }
-
-    main{
-      max-width:900px;
+    main {
+      max-width: 900px;
       margin: 2rem auto;
       padding: 1rem;
     }
-
-    .section{
-      margin:1rem 0;
-      background: rgba(20,20,30,0.95);
-      border-radius:10px;
-      box-shadow:0 0 10px rgba(0,0,0,0.5);
-      overflow:hidden;
+    .section {
+      margin: 1rem 0;
+      background: rgba(20, 20, 30, 0.95);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.5);
+      overflow: hidden;
     }
-    .section summary{
-      background: var(--card);
-      cursor:pointer;
-      padding:1rem;
-      font-size:1.25rem;
-      color: var(--accent);
-      font-weight:700;
-      border-bottom:1px solid #444;
-      list-style:none;
-      user-select:none;
+    .section summary {
+      background: #111;
+      cursor: pointer;
+      padding: 1rem;
+      font-size: 1.5rem;
+      color: #ffcc00;
+      font-weight: bold;
+      border-bottom: 1px solid #444;
     }
-
-    ul.rules{
-      list-style:none;
-      padding:0;
-      margin:0;
+    ul.rules {
+      list-style: none;
+      padding: 0;
+      margin: 0;
     }
-    ul.rules li{
-      padding:1rem;
-      border-bottom:1px solid #333;
-      color:#ddd;
+    ul.rules li {
+      padding: 1rem;
+      border-bottom: 1px solid #333;
     }
-
-    /* sub-descriptor toggles (small dropdowns under rules) */
-    ul.rules details{
-      margin-top:6px;
+    ul.rules details summary {
+      font-size: 1rem;
+      font-weight: normal;
+      color: #ccc;
+      padding: 0.3rem 0;
+      cursor: pointer;
+      background: none;
+      border: none;
     }
-    ul.rules details summary{
-      font-size:1rem;
-      font-weight:600;
-      color:#cfcfcf;
-      padding:0;
-      cursor:pointer;
-      background:none;
-      border:none;
-      display:flex;
-      align-items:center;
-      gap:8px;
+    ul.rules details[open] summary {
+      color: #ffcc00;
     }
-    /* small arrow only: remove any text like "Expand" */
-    ul.rules details summary::marker{ content: none; } /* safety */
-    ul.rules details summary::after{
-      content: "▸";
-      margin-left:auto;
-      transform: rotate(0deg);
-      transition: transform .12s linear;
-      color:#aaa;
-      font-weight:700;
+    .rule-desc {
+      margin-top: 0.5rem;
+      padding: 0.75rem;
+      background: rgba(255,255,255,0.05);
+      border-radius: 5px;
+      font-size: 0.95rem;
     }
-    ul.rules details[open] > summary::after{
-      transform: rotate(90deg);
-      color: var(--accent);
+    footer {
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+      font-size: 0.9rem;
+      color: #888;
     }
 
-    .rule-desc{
-      margin-top:0.6rem;
-      padding:0.75rem;
-      background: rgba(255,255,255,0.03);
-      border-radius:6px;
-      font-size:0.95rem;
-      color:#dcdcdc;
+   /* Social buttons */
+    .social-links {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      display: flex;
+      gap: 0.5rem;
     }
-
-    footer{
-      text-align:center;
-      padding:1rem;
-      margin-top:2rem;
-      font-size:0.9rem;
-      color:var(--muted);
+    .social-links a {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #222;
+      color: #fff;
+      text-decoration: none;
+      transition: background 0.3s;
     }
-
-    /* small responsive tweaks */
-    @media (max-width:520px){
-      .social-links{ right:8px; top:8px; gap:6px; }
-      .social-links a{ width:40px; height:40px; }
-      header h1{ font-size:1.8rem; }
+    .social-links a:hover {
+      background: #444;
+    }
+    .social-links svg {
+      width: 20px;
+      height: 20px;
+      fill: #fff;
     }
   </style>
 </head>
 <body>
   <header>
-    <!-- Social Buttons: steam + discord -->
-    <div class="social-links" aria-hidden="false">
-      <!-- Steam group -->
-      <a href="https://steamcommunity.com/groups/excelsussteamgroup" target="_blank" rel="noopener" title="Excelsus Steam Group" aria-label="Excelsus Steam Group">
-        <!-- Simplified steam-style icon (two connected circles) -->
-        <svg viewBox="0 0 64 64" preserveAspectRatio="xMidYMid meet" role="img" aria-hidden="true">
-          <g fill="currentColor">
-            <!-- large lower circle -->
-            <circle cx="18" cy="46" r="8"></circle>
-            <!-- smaller upper circle -->
-            <circle cx="46" cy="20" r="7"></circle>
-            <!-- connecting arm -->
-            <path d="M28 36c6-3 16-8 22-6 1 .3 1.5 1.5.9 2.4-1.1 1.6-7.8 6.6-11 8.6-2.6 1.6-9 2.2-13 1.8-3-.3-6.1-3.4-5.9-6.8.2-3.4 3.2-4.9 7-0z"></path>
-          </g>
-        </svg>
-      </a>
-
-      <!-- Discord invite -->
-      <a href="https://discord.gg/ThQN345yrB" target="_blank" rel="noopener" title="Excelsus Discord" aria-label="Excelsus Discord">
-        <!-- Simplified, even-scaled Discord-like mark with two 'eye' circles -->
-        <svg viewBox="0 0 64 64" preserveAspectRatio="xMidYMid meet" role="img" aria-hidden="true">
-          <g fill="currentColor">
-            <!-- body / controller-ish silhouette -->
-            <path d="M10 16c6-5 36-6 44 0 0 0 4 18-10 30-6 5-28 6-40 0C6 38 10 16 10 16z"></path>
-            <!-- eyes -->
-            <circle cx="24" cy="30" r="3.2" fill="#fff"></circle>
-            <circle cx="40" cy="30" r="3.2" fill="#fff"></circle>
-          </g>
-        </svg>
-      </a>
-    </div>
-
     <h1>Excelsus</h1>
-    <p>Build • PvP • Community</p>
   </header>
 
   <main>
+
     <!-- General Server Rules -->
     <details class="section" open>
       <summary>General Server Rules</summary>
@@ -218,7 +134,7 @@
         <li>
           (4) Do not abuse props, Such as: Proptrapping or Propkilling (Excluding Gravity Gun)
           <details>
-            <summary aria-hidden="true"></summary>
+            <summary>Expand</summary>
             <div class="rule-desc">
               Exemptions may be granted for this rule if it is handled under a different section, such as Wiremod Rules.
             </div>
@@ -234,7 +150,7 @@
         <li>
           Preface
           <details>
-            <summary aria-hidden="true"></summary>
+            <summary>Expand</summary>
             <div class="rule-desc">
               "Wiremod" is a reference to not just the addon, but expression2, simfphys and starfall as a whole.
             </div>
@@ -243,7 +159,7 @@
         <li>
           Ultimate Summary
           <details>
-            <summary aria-hidden="true"></summary>
+            <summary>Expand</summary>
             <div class="rule-desc">
               "Do not use something you would not fight yourself." If you can't or wouldn't willingly fight something you made, it's either too strong, not fun, or downright mingey.
               Staff will ultimately decide if a contraption is an issue.
@@ -253,7 +169,7 @@
         <li>
           Notes
           <details>
-            <summary aria-hidden="true"></summary>
+            <summary>Expand</summary>
             <div class="rule-desc">
               Staff may ban contraptions even if not explicitly against rules. You may appeal to the "Wire / SF Committee".
               Committee members may exempt contraptions if they are creative or fun.
@@ -273,15 +189,15 @@
         <li>
           (4) Anything that uses lock-ons is prohibited unless:
           <details>
-            <summary aria-hidden="true"></summary>
+            <summary>(4a)</summary>
             <div class="rule-desc">
-              (4a) The lockon informs the target (visual/audio) in a reasonable time.
+              The lockon informs the target (visual/audio) in a reasonable time.
             </div>
           </details>
           <details>
-            <summary aria-hidden="true"></summary>
+            <summary>(4b)</summary>
             <div class="rule-desc">
-              (4b) The weapon can be countered, e.g., dodging or blocking, unless evasiveness is the balance factor (like jet heatseekers).
+              The weapon can be countered, e.g., dodging or blocking, unless evasiveness is the balance factor (like jet heatseekers).
             </div>
           </details>
         </li>
@@ -289,9 +205,26 @@
     </details>
 
   </main>
+  <header>
+    <!-- Social Buttons -->
+    <div class="social-links">
+      <!-- Steam -->
+      <a href="https://steamcommunity.com/groups/excelsussteamgroup" target="_blank" title="Steam Group">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512">
+          <path d="M496 256c0 137-111 248-248 248-22.5 0-44.2-3-64.8-8.7l44.1-70.3c23.7 1.3 46.4-8.5 61.7-26.1l62.3 30.9c5.2 2.6 11.4-.9 11.4-6.8v-66.7c0-5.9-6.2-9.4-11.4-6.8l-62.3 30.9c-15.2-17.6-38-27.4-61.7-26.1l-44.1-70.3c20.6-5.7 42.3-8.7 64.8-8.7 137 0 248 111 248 248zM152.1 291c-16.2 0-29.3 13.1-29.3 29.3s13.1 29.3 29.3 29.3 29.3-13.1 29.3-29.3-13.1-29.3-29.3-29.3z"/>
+        </svg>
+      </a>
+      <!-- Discord -->
+      <a href="https://discord.gg/ThQN345yrB" target="_blank" title="Discord">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512">
+          <path d="M524.5 69.9c-54.5-25.3-112.1-36.3-171.5-36.9-1.4 0-2.8.8-3.7 2-7.4 10.3-14 21.2-19.8 32.5-58.8-8.8-116.4-8.3-173.7 0-5.9-11.4-12.4-22.2-19.8-32.5-.9-1.2-2.3-2-3.7-2-59.4.6-117 11.6-171.5 36.9-1.7.8-2.9 2.6-2.9 4.6-3.5 74 10.5 147.2 47.6 211.9.7 1.2 1.9 2.1 3.2 2.4 37.5 13.8 75.6 23.1 114.6 28.8 1.5.2 3.1-.4 4.1-1.5 8.8-12 16.7-24.5 23.7-37.5.9-1.7.1-3.8-1.7-4.5-12.1-4.6-23.6-10-34.5-16.4-1.6-.9-2.1-3-1.1-4.6 2.3-3.4 4.6-6.9 6.8-10.4.9-1.4 2.7-1.9 4.2-1.2 72.8 33.3 151.5 33.3 224.3 0 1.5-.7 3.3-.2 4.2 1.2 2.2 3.5 4.5 7 6.8 10.4 1 1.6.5 3.7-1.1 4.6-10.9 6.3-22.4 11.8-34.5 16.4-1.8.7-2.6 2.8-1.7 4.5 7 13 14.9 25.5 23.7 37.5 1 1.2 2.6 1.8 4.1 1.5 39-5.7 77.1-15 114.6-28.8 1.3-.4 2.5-1.3 3.2-2.4 37.1-64.7 51.1-137.9 47.6-211.9-.1-2-1.3-3.8-3-4.6z"/>
+        </svg>
+      </a>
+    </div>
+  </header>
 
   <footer>
-    Excelsus Server • Build & PvP • © 2025
+    Excelsus Server • © 2025
   </footer>
 </body>
 </html>
