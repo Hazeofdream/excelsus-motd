@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Excelsus - Rules & MOTD</title>
+  <title>Excelsus - Rules</title>
   <style>
     body {
       margin: 0;
@@ -12,14 +12,12 @@
       background: linear-gradient(135deg, #1e1e2f, #2d2d44);
       background-attachment: fixed;
     }
-
     header {
       background: rgba(0, 0, 0, 0.7);
       text-align: center;
       padding: 2rem 1rem;
       border-bottom: 2px solid #444;
     }
-
     header h1 {
       margin: 0;
       font-size: 2.5rem;
@@ -27,19 +25,16 @@
       text-transform: uppercase;
       letter-spacing: 2px;
     }
-
     header p {
       margin: 0.5rem 0 0;
       font-size: 1.2rem;
       color: #aaa;
     }
-
     main {
       max-width: 900px;
       margin: 2rem auto;
       padding: 1rem;
     }
-
     .section {
       margin: 1rem 0;
       background: rgba(20, 20, 30, 0.95);
@@ -47,7 +42,6 @@
       box-shadow: 0 0 10px rgba(0,0,0,0.5);
       overflow: hidden;
     }
-
     .section summary {
       background: #111;
       cursor: pointer;
@@ -57,18 +51,27 @@
       font-weight: bold;
       border-bottom: 1px solid #444;
     }
-
-    .rules {
+    ul.rules {
       list-style: none;
       padding: 0;
       margin: 0;
     }
-
-    .rules li {
+    ul.rules li {
       padding: 1rem;
       border-bottom: 1px solid #333;
     }
-
+    ul.rules details summary {
+      font-size: 1rem;
+      font-weight: normal;
+      color: #ccc;
+      padding: 0.3rem 0;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+    ul.rules details[open] summary {
+      color: #ffcc00;
+    }
     .rule-desc {
       margin-top: 0.5rem;
       padding: 0.75rem;
@@ -76,21 +79,6 @@
       border-radius: 5px;
       font-size: 0.95rem;
     }
-
-    details[open] > summary::after {
-      content: "▲";
-      float: right;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
-    details > summary::after {
-      content: "▼";
-      float: right;
-      font-size: 0.9rem;
-      color: #aaa;
-    }
-
     footer {
       text-align: center;
       padding: 1rem;
@@ -107,84 +95,97 @@
   </header>
 
   <main>
-    <section>
-      <h2 style="color:#ffcc00;text-align:center;">Message of the Day</h2>
-      <p style="text-align:center;">
-        Welcome to <strong>Excelsus</strong>! This is a Build and PvP server where creativity and combat collide. Respect others, play fair, and most importantly — have fun!
-      </p>
-    </section>
 
-    <!-- General Rules -->
+    <!-- General Server Rules -->
     <details class="section" open>
-      <summary>General Rules</summary>
+      <summary>General Server Rules</summary>
       <ul class="rules">
+        <li>(1) Do not use any method or threaten to crash the server, even as a joke.</li>
+        <li>(2) Do not use third-party applications (Aka: Cheating) or use exploits.</li>
+        <li>(3) Do not DDoS or expose personal information of players. This includes threats of this nature.</li>
         <li>
-          1. No prop killing.
+          (4) Do not abuse props, Such as: Proptrapping or Propkilling (Excluding Gravity Gun)
           <details>
             <summary>More Info</summary>
             <div class="rule-desc">
-              Prop killing includes pushing, flinging, or crushing players using spawned props.
-            </div>
-          </details>
-        </li>
-        <li>
-          2. No prop surfing.
-        </li>
-        <li>
-          3. No prop blocking.
-          <details>
-            <summary>More Info</summary>
-            <div class="rule-desc">
-              Blocking off areas of the map or trapping players with props is not allowed.
-            </div>
-          </details>
-        </li>
-        <li>
-          4. No hacking or cheating of any kind.
-        </li>
-        <li>
-          5. Respect all players.
-          <details>
-            <summary>More Info</summary>
-            <div class="rule-desc">
-              Racism, harassment, or excessive toxicity will not be tolerated.
+              Exemptions may be granted for this rule if it is handled under a different section, such as Wiremod Rules.
             </div>
           </details>
         </li>
       </ul>
     </details>
 
-    <!-- Building Rules -->
+    <!-- Wiremod Guidelines -->
     <details class="section" open>
-      <summary>Building Rules</summary>
+      <summary>Wiremod Guidelines</summary>
       <ul class="rules">
         <li>
-          1. Do not create laggy or crash-inducing builds.
+          Preface
+          <details>
+            <summary>Expand</summary>
+            <div class="rule-desc">
+              "Wiremod" is a reference to not just the addon, but expression2, simfphys and starfall as a whole.
+            </div>
+          </details>
         </li>
         <li>
-          2. Keep builds appropriate for all players.
+          Ultimate Summary
+          <details>
+            <summary>Expand</summary>
+            <div class="rule-desc">
+              "Do not use something you would not fight yourself." If you can't or wouldn't willingly fight something you made, it's either too strong, not fun, or downright mingey.
+              Staff will ultimately decide if a contraption is an issue.
+            </div>
+          </details>
         </li>
         <li>
-          3. Do not abuse building tools to gain unfair PvP advantages.
+          Notes
+          <details>
+            <summary>Expand</summary>
+            <div class="rule-desc">
+              Staff may ban contraptions even if not explicitly against rules. You may appeal to the "Wire / SF Committee".
+              Committee members may exempt contraptions if they are creative or fun.
+            </div>
+          </details>
         </li>
       </ul>
     </details>
 
-    <!-- PvP Rules -->
+    <!-- Rules -->
     <details class="section" open>
-      <summary>PvP Rules</summary>
+      <summary>Rules</summary>
       <ul class="rules">
+        <li>(1) All contraptions that resemble a mech or vehicle must be destructible. Public dupes must be damage-ready.</li>
+        <li>(2) Hitboxes must reasonably match visual appearance.</li>
+        <li>(3) Emplacements like artillery are exempt if stoppable (e.g., shooting the gunner).</li>
         <li>
-          1. No spawn killing.
-        </li>
-        <li>
-          2. Do not exploit map bugs or glitches.
-        </li>
-        <li>
-          3. Play fair and avoid abusing mechanics.
+          (4) Anything that uses lock-ons is prohibited unless:
+          <details>
+            <summary>(4a) Expand</summary>
+            <div class="rule-desc">
+              The lockon informs the target (visual/audio) in a reasonable time.
+            </div>
+          </details>
+          <details>
+            <summary>(4b) Expand</summary>
+            <div class="rule-desc">
+              The weapon can be countered, e.g., dodging or blocking, unless evasiveness is the balance factor (like jet heatseekers).
+            </div>
+          </details>
         </li>
       </ul>
     </details>
+
+    <!-- Armored Combat Framework -->
+    <details class="section" open>
+      <summary>Armored Combat Framework</summary>
+      <ul class="rules">
+        <li>
+          ACF falls under wiremod guidelines. If two parties agree to a ruleset, server staff will enforce it for them.
+        </li>
+      </ul>
+    </details>
+
   </main>
 
   <footer>
